@@ -2,10 +2,10 @@
 A code auditing framework tool for aerospace applications adhering to NASA's JPL Rule of 10. Created for Embedded C applications.
 
 
-- Make videos
 - Make this into 10 day content (Twitter and Linkedin)
 - Make into expanded PDF for sale on GumRoad
-- Make this into YouTube series (10 videos)
+- Make into article series? 
+- Make this into YouTube series (10 videos. 1 min each)
 - Sell this as a course
 - Writing secure aerospace code for $30
 - Make a video about this on Retia YouTube channel
@@ -22,3 +22,19 @@ https://code.nasa.gov/#/guide
 
 Inspiration:
 https://security.web.cern.ch/recommendations/en/codetools/rats.shtml
+
+Optimized Compiler:
+
+Rule 2 (routine checking)
+All code shall always be compiled with all compiler warnings enabled at the highest warning level available, with no errors or warnings resulting. All code shall further be verified with a JPL approved state-of-the-art static source code analyzer, with no errors or warnings resulting. [MISRA-C:2004 Rule 21.1]
+This rule should be considered routine practice, even for non-critical code development. Given compliance with Rule 1, this means that the code should compile without errors or warnings issued with the standard gcc compiler, using a command line with minimally the following option flags:
+      gcc –Wall –pedantic –std=iso9899:1999 source.c
+A suggested broader set of gcc compiler flags includes also:
+      -Wtraditional
+      -Wshadow
+      -Wpointer-arith
+      -Wcast-qual
+      -Wcast-align
+      -Wstrict-prototypes
+      -Wmissing-prototypes
+      -Wconversion

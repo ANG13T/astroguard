@@ -1,4 +1,5 @@
 /*
+ NASA JPL RULE #1
  Restrict all code to very simple control flow constructs
  - avoid gotos
  - setjmp or longjmp constructs
@@ -38,31 +39,20 @@ Non-local jump, allowing you to jump from one part of your program to another, e
 
 jmp_buf jump_buffer;
 
-int main()
-{
-    // Case 1: NO GOTOs
-   checkIfOdd(5);
-   checkIfOdd_Fixed(5);
-
-    // Case 2: NO Recursion (Direct)
-    // Case 3: NO Recusrion (Indirect)
-    // Case 4: NO JMP Buffer Commands
-}
-
 /*
  TASK: Demonstrates GOTO 
  GOTOs within programming 
 */
 void checkIfOdd(int value) {
     if (value % 2 == 1) {
-        go_to odd_handling;
+        goto odd_handling;
     }
 
-    printf("Value is EVEN!");
+    printf("Value is EVEN! \n");
     return;
 
     odd_handling:
-        printf("This is an ODD value")
+        printf("This is an ODD value \n");
 }
 
 /*
@@ -70,11 +60,11 @@ void checkIfOdd(int value) {
 */
 void checkIfOdd_Fixed(int value) {
     if (value % 2 == 1) {
-        printf("This is an ODD value");
+        printf("This is an ODD value \n");
         return;
     }
 
-    printf("Value is EVEN!");
+    printf("Value is EVEN! \n");
 }
 
 /*
@@ -89,14 +79,25 @@ int checkFactorialDirect(int value) {
     }
 }
 
+int checkFactorialDirect_Fixed(int value) {
+    int result = 1;
+    for(int i = 1; i <= value; i++) {
+        result *= i;
+    }
+    return result;
+}
+
 /*
  TASK: Demonstrates indirect recursion (0 = even and 1 = odd)
  Recursion within programming 
 */
+// Function prototypes
+int checkOddIndirect(int value);
+int checkEvenIndirect(int value);
 
 int checkOddIndirect(int value) {
     if (value == 0) { // base case
-        return 1;
+        return 0;
     } else { // recursive case
         return checkEvenIndirect(value - 1);
     }
@@ -104,16 +105,37 @@ int checkOddIndirect(int value) {
 
 int checkEvenIndirect(int value) {
     if (value == 0) { // base case
-        return 0;
+        return 1;
     } else { // recursive case
         return checkOddIndirect(value - 1);
     }
 }
 
+int checkOddIndirect_Fixed(int value) {
+    int result = 0;
+
+    while (value > 0) {
+        value--;
+        result = 1 - result; // Toggle between 1 and 0
+    }
+
+    return result;
+}
+
+int checkEvenIndirect_Fixed(int value) {
+    int result = 1;
+
+    while (value > 0) {
+        value--;
+        result = 1 - result; // Toggle between 1 and 0
+    }
+
+    return result;
+}
+
 /*
  TASK: Demonstrate longjmp and setjmp
 */
-
 void testJumpBuffer() {
     int jump_result = setjmp(jump_buffer);
 
@@ -134,4 +156,45 @@ int executeJumpBuffer() {
     printf("This line is never reached\n");
 
     return 0;
+}
+
+
+void testJumpBuffer_Fixed(int jump_result) {
+    if (jump_result == 0) {
+        // Code here is executed on the first pass
+        printf("First pass!\n");
+    } else {
+        // Code here is executed if the function was called with a non-zero value
+        printf("Resumed with value %d\n", jump_result);
+    }
+}
+
+int executeJumpBuffer_Fixed() {
+    int result = 30;
+    testJumpBuffer_Fixed(result);
+
+    printf("This line is reached after the function call\n");
+
+    return 0;
+}
+
+
+int main() {
+    // Case 1: NO GOTOs
+   checkIfOdd(5);
+   checkIfOdd_Fixed(5);
+
+    // Case 2: NO Recursion (Direct)
+    printf("Factorial: %d\n", checkFactorialDirect(5));
+    printf("Factorial: %d\n", checkFactorialDirect_Fixed(5));
+
+    // Case 3: NO Recursion (Indirect)
+    printf("Check Odd Indirect: %d\n", checkOddIndirect(9));
+
+    printf("Check Odd Indirect: %d\n", checkOddIndirect_Fixed(9));
+
+
+    // Case 4: NO JMP Buffer Commands
+    // executeJumpBuffer(); [JUST AN EXAMPLE. UNCOMMENT TO EXECUTE]
+    executeJumpBuffer_Fixed();
 }
