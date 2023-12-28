@@ -25,7 +25,9 @@
  When the program is complete, the memory is released and is usable again for another operation.
 
 */
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 // SNIPPETS of Code Demonstrating Instances of Dynamic Memory Allocation in C
 // Dynamic Memory allocation occurs when a size of a data structure (ie. array) is modified during runtime
@@ -46,7 +48,7 @@ void malloc_example(int value) {
 // this creates segmented chunks of memory with preconfigured values
 void calloc_example(int value) {
   int* ptr; // pointer for the base address of the block initiated
-  ptr = (int*) calloc(value * sizeof(int));
+  ptr = (int*) calloc(value, value * sizeof(int));
   if (ptr == NULL) {
     printf("Memory not allocated.\n");
   } else {
@@ -58,9 +60,9 @@ void calloc_example(int value) {
 void free_example(int value) {
   int *ptr, *ptr1;
   ptr = (int*) malloc(value * sizeof(int));
-  ptr1 = (int*) calloc(value * sizeof(int));
+  ptr1 = (int*) calloc(5, value * sizeof(int));
 
-  if (ptr == NULL or ptr1 == NULL) {
+  if (ptr == NULL || ptr1 == NULL) {
     printf("Memory not assigned");
     exit(1);
   } else {
@@ -103,14 +105,43 @@ void alloca_example(int value) {
 
 // sbrk (Aadjusts the program's data space (heap) by incrementing it by a specified number of bytes)
 // this is typically used for low level memory management
-void sbrk(int value) {
+void sbrk_example(int value) {
   // Increment the program's data space (heap) by 100 bytes
   void* newHeapSpace = sbrk(100);
   printf("Incremented program's data space by 100 bytes!");
 }
 
 // SNIPPETS Demonstrating Memory Leaks in C
+// Memory leaks occur when new memory is allocated dynamically and never deallocated
 
+void memory_leak_1() {
+  int *ptr = (int*)malloc(sizeof(int)); // allocating a single integer amount of memory
+  *ptr = 15;
+  printf("%d\n", *ptr);
+  // free(ptr); // use this to avoid a memory leak!
+  ptr = NULL; // assigning the pointer to null makes the memory allocated for 15 inaccessible
+}
+
+void memory_leak_2() {
+  int a = 2, b = 10;
+  // inner block (introduces scope)
+  {
+     int *sum = (int*)malloc(sizeof(int)); // preallocates one integer memory slot
+     *sum = a + b; // assigns sum integer a slot within memory
+     printf("%d\n", *sum);
+     // free(sum); // add this to avoid memory leak!
+  }
+
+  // the sum pointer is "out of scope" making the sum inaccessible!
+  // printf("%d\n", *sum);
+}
 
 int main() {
+  malloc_example(5);
+  calloc_example(5);
+  free_example(5);
+  realloc_example(5, 7);
+  sbrk_example(5);
+  memory_leak_1();
+  memory_leak_2();
 }
