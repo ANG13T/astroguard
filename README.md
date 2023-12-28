@@ -1,13 +1,11 @@
 # astroguard
 A code auditing framework tool for aerospace applications adhering to NASA's JPL Rule of 10. Created for Embedded C applications.
 
-
-- Make this into 10 day content (Twitter and Linkedin)
+## Outcomes
+- VSCode Extension + Compiler Setting Adjustments
+- YouTube Series with Slideshows (2min each) 12 video series [1 - 2 days]
+- 10 Case Study Files and README
 - Make into expanded PDF for sale on GumRoad
-- Make into article series? 
-- Make this into YouTube series (10 videos. 1 min each)
-- Sell this as a course
-- Writing secure aerospace code for $30
 - Make a video about this on Retia YouTube channel
 
 https://github.com/abougouffa/awesome-coding-standards/blob/master/jpl-c-1.0.pdf
