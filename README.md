@@ -36,3 +36,10 @@ A suggested broader set of gcc compiler flags includes also:
       -Wstrict-prototypes
       -Wmissing-prototypes
       -Wconversion
+
+## Testing out Snippets
+```
+cd snippets
+gcc Rule_4.c -o Rule_4
+./Rule_4
+```
