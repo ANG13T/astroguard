@@ -133,14 +133,31 @@ void optimizedCodeExample2() {
     printf("Radiation for Vega (Temperature = %.2f K, Radius = %.2e m): %.4e W\n", vega.calculateSurfaceTemperature(&vega), vega.calculateRadius(&vega), vega.calculateRadiation(&vega));
 }
 
-// Violation: 
+// Violation: does not utilize data structures making the code redundant and no parameterization
+// simple program to sum values
 void lengthyCodeViolation3() {
+    int num1, num2, num3;
 
+    int sum = num1 + num2 + num3;
+
+    printf("Sum %d\n", sum);
 }
 
-// Fix: 
-void optimizedCodeExample3() {
+// Fix: use a data structure (array) and include a function with parametrization
 
+int calcSum(int nums[], int size) {
+    int sum = 0;
+    for(int i = 0; i < size; i++) {
+        sum += nums[i];
+    }
+
+    return sum;
+}
+
+void optimizedCodeExample3() {
+    int numbers[] = {10, 20, 30, 40, 50};
+    int sum = calcSum(numbers, 5);
+    printf("Sum: %d\n", sum);
 }
 
 int main() {
