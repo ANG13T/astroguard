@@ -4,7 +4,6 @@
  What is a runtime assertion?
 A runtime assertion is a conditional statement that should always result to true at that line in the program
 It is used to catch potential errors early on in that program (debugging and testing)
-
 */
 
 #include <stdio.h>
