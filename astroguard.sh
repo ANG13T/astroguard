@@ -19,15 +19,31 @@ clear='\033[0m'
 
 banner() {
     if [ $hidebanner == 0 ]; then
-    cat './assets/banner.txt'
+    color_text $(cat "./assets/banner.txt") magenta
     fi
 }
 
-print_color(text, color) {
-    echo -e 
+# Adding color to terminal messages
+print_color() {
+    local text="$1"
+    local color="$2"
+    echo -e "${color}${text}${clear}"
 }
 
-# Adding color to terminal messages
+# Installation Checking
+# Checks for the following tools: gcc, gcov, gdb, and glov
+print_color "Lauching astroguard 🚀" blue
+print_color "Step 1 > Checking for installations" blue
+
+if command -v gcc &> /dev/null; then
+    echo "GCC is installed."
+    # Check GCC version
+    gcc_version=$(gcc --version | grep -oP 'gcc \K[^\s]+')
+    echo "GCC version: $gcc_version"
+else
+    echo "GCC is not installed. Please install GCC before proceeding."
+    exit 1
+fi
 
 
 # Check if the correct number of arguments is provided

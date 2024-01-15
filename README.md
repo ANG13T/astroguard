@@ -15,6 +15,19 @@ Prints out the following:
 - GCC -> GCOV -> LCOV
 Streamline tool + debugging + pretty printing
 
+## Usage
+```
+git clone https://github.com/ANG13T/astroguard
+cd astroguard
+chmod +x astroguard.sh
+astroguard.sh ./snippets/Rule_1.c
+```
+
+Make sure you have the following installed on your machine:
+- gcc:
+- gdb: 
+- gcov: 
+- lcov:
 
 ## NASA JPL Rule of 10
 
@@ -47,23 +60,12 @@ Streamline tool + debugging + pretty printing
 - additional:
 pretty printing of each step
 
-Steps:
-1. Very simple workflow of GCC -> GCOV -> LCOV
-2. Tryu workflow on JPL snippet
-2. Implement shell script
-3. Try it out on a program
-
 ## GCC Usage
 GCC (GNU Compiler Collection) is a compiler for C programs maintained by the GNU Project. It turns your C code into binary which is then interpreted by a computer. It performs static analysis and debugging. 
 
 ## Optimized Compiler [astroguard.sh]:
 astroguard settings should be set to the most pedantic level of operation.
 Run the astroguard.sh with your chosen C file to compile your selected file with those warnings.
-
-```
-chmod +x astroguard.sh
-astroguard.sh ./snippets/Rule_1.c
-```
 
 ## Testing out Snippets
 ```
