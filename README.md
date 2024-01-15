@@ -1,28 +1,25 @@
 # astroguard
-A code auditing framework tool for aerospace applications adhering to NASA's JPL Rule of 10. Created for Embedded C applications.
+A simple code auditing and debugger tool based on gcc for embedded C aerospace applications adhering to NASA's JPL Rule of 10.
 
-## Outcomes
-- Compiler Setting Adjustments
-- Linter Reocmmendations and Warning Systems
-- YouTube Series with Slideshows (2min each) 12 video series [1 - 2 days]
-- 10 Case Study Files and README
-- Make into expanded PDF for sale on GumRoad
-- Make a video about this on Retia YouTube channel
 
-https://github.com/abougouffa/awesome-coding-standards/blob/master/jpl-c-1.0.pdf
+## About
 
-https://nasa.github.io/fprime/UsersGuide/dev/code-style.html
+## NASA JPL Rule of 10
+Rule 1:
+Rule 2:
+Rule 3:
+Rule 4:
+Rule 5:
+Rule 6:
+Rule 7:
+Rule 8:
+Rule 9:
+Rule 10:
 
-https://en.wikipedia.org/wiki/The_Power_of_10:_Rules_for_Developing_Safety-Critical_Code
+## Optimized Compiler [run.sh]:
+Compilation settings should be set to the most pedantic level of operation.
+Run the run.sh with your chosen C file to compile your selected file with those warnings.
 
-https://betterprogramming.pub/the-power-of-10-nasas-rules-for-coding-43ae1764f73d
-
-https://code.nasa.gov/#/guide
-
-Inspiration:
-https://security.web.cern.ch/recommendations/en/codetools/rats.shtml
-
-Optimized Compiler [run.sh]:
 ```
 chmod +x run.sh
 run.sh ./snippets/Rule_1.c
@@ -35,5 +32,10 @@ gcc Rule_4.c -o Rule_4
 ./Rule_4
 ```
 
-
-## Routine Checking and Sanitation Warnings
+## References
+- https://security.web.cern.ch/recommendations/en/codetools/rats.shtml
+- https://code.nasa.gov/#/guide
+- https://betterprogramming.pub/the-power-of-10-nasas-rules-for-coding-43ae1764f73d
+- https://en.wikipedia.org/wiki/The_Power_of_10:_Rules_for_Developing_Safety-Critical_Code
+- https://nasa.github.io/fprime/UsersGuide/dev/code-style.html
+- https://github.com/abougouffa/awesome-coding-standards/blob/master/jpl-c-1.0.pdf
