@@ -6,3 +6,7 @@
  What is a dereference?
 
 */
+
+int main() {
+    
+}

@@ -2,7 +2,8 @@
 A code auditing framework tool for aerospace applications adhering to NASA's JPL Rule of 10. Created for Embedded C applications.
 
 ## Outcomes
-- VSCode Extension + Compiler Setting Adjustments
+- Compiler Setting Adjustments
+- Linter Reocmmendations and Warning Systems
 - YouTube Series with Slideshows (2min each) 12 video series [1 - 2 days]
 - 10 Case Study Files and README
 - Make into expanded PDF for sale on GumRoad
