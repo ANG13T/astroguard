@@ -37,19 +37,3 @@ gcc Rule_4.c -o Rule_4
 
 
 ## Routine Checking and Sanitation Warnings
-- JPL approved state-of-the-art static source code analyzer, with no errors or warnings resulting
-
-All code shall always be compiled with all compiler warnings enabled at the highest warning level available, with no errors or warnings resulting. All code shall further be verified with a JPL approved state-of-the-art static source code analyzer, with no errors or warnings resulting. [MISRA-C:2004 Rule 21.1]
-
-
-This rule should be considered routine practice, even for non-critical code development. Given compliance with Rule 1, this means that the code should compile without errors or warnings issued with the standard gcc compiler, using a command line with minimally the following option flags:
-      gcc –Wall –pedantic –std=iso9899:1999 source.c
-A suggested broader set of gcc compiler flags includes also:
-      -Wtraditional
-      -Wshadow
-      -Wpointer-arith
-      -Wcast-qual
-      -Wcast-align
-      -Wstrict-prototypes
-      -Wmissing-prototypes
-      -Wconversion
