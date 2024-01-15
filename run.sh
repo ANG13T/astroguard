@@ -12,7 +12,7 @@ file_name=$(basename -- "$file_path")
 file_name_no_ext="${file_name%.*}"
 
 # Compile the C file
-gcc –Wall –pedantic -Wtraditional -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wstrict-prototypes -Wmissing-prototypes -Wconversion –std=iso9899:1999" $file_path" -o "$file_name_no_ext"
+gcc –Wall –pedantic –Wtraditional –Wshadow –Wpointer-arith –Wcast-qual –Wcast-align –Wstrict–prototypes –Wmissing–prototypes –Wconversion –std=iso9899:1999" $file_path" -o "$file_name_no_ext"
 
 # Check if compilation was successful
 if [ $? -eq 0 ]; then
