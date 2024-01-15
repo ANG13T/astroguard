@@ -6,7 +6,7 @@ A simple code auditing and debugger tool based on gcc for embedded C aerospace a
 Gcov is a source code coverage analysis and statement-by-statement profiling tool
 Prints out the following:
 - code converage (.gcda)
-- compilation issues 
+- astroguard issues 
 
 ## Things to mention
 - Preprocessors
@@ -56,13 +56,13 @@ Steps:
 ## GCC Usage
 GCC (GNU Compiler Collection) is a compiler for C programs maintained by the GNU Project. It turns your C code into binary which is then interpreted by a computer. It performs static analysis and debugging. 
 
-## Optimized Compiler [compilation.sh]:
-Compilation settings should be set to the most pedantic level of operation.
-Run the compilation.sh with your chosen C file to compile your selected file with those warnings.
+## Optimized Compiler [astroguard.sh]:
+astroguard settings should be set to the most pedantic level of operation.
+Run the astroguard.sh with your chosen C file to compile your selected file with those warnings.
 
 ```
-chmod +x compilation.sh
-compilation.sh ./snippets/Rule_1.c
+chmod +x astroguard.sh
+astroguard.sh ./snippets/Rule_1.c
 ```
 
 ## Testing out Snippets

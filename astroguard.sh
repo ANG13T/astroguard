@@ -1,4 +1,34 @@
 #!/bin/bash
+# astroguard - A code auditing and streamlining tool for C programs to adhere to NASA JPL's Rule of 10
+# Developed for Stellaryx Labs [stellaryxlabs.com]
+# Written by Angelina Tsuboi [angelinatsuboi.com]
+# Released under MIT License
+
+# Default Values
+hidebanner=0
+version=0.1
+
+# Default colors
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+blue='\033[0;34m'
+magenta='\033[0;35m'
+cyan='\033[0;36m'
+clear='\033[0m'
+
+banner() {
+    if [ $hidebanner == 0 ]; then
+    cat './assets/banner.txt'
+    fi
+}
+
+print_color(text, color) {
+    echo -e 
+}
+
+# Adding color to terminal messages
+
 
 # Check if the correct number of arguments is provided
 if [ "$#" -ne 1 ]; then
