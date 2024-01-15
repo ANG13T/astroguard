@@ -38,6 +38,21 @@ Streamline tool + debugging + pretty printing
 
 [Rule 10](): Compile with all possible warnings active; all warnings should then be addressed before release of the software.
 
+## TODO
+- write a shell script which streamlines:
+1. GCC compiler with all flags
+2. Code coverage using gcov
+3. Reporting og .gcda files using LCOV 
+
+- additional:
+pretty printing of each step
+
+Steps:
+1. Very simple workflow of GCC -> GCOV -> LCOV
+2. Tryu workflow on JPL snippet
+2. Implement shell script
+3. Try it out on a program
+
 ## GCC Usage
 GCC (GNU Compiler Collection) is a compiler for C programs maintained by the GNU Project. It turns your C code into binary which is then interpreted by a computer. It performs static analysis and debugging. 
 
