@@ -1,0 +1,17 @@
+Usage: astroguard [flag] /path/to/file.c
+
+FLAGS:
+-h prints out a help screen
+-o output file path for output contents (optional)
+
+ABOUT:
+astroguard is a simple code auditing and debugger tool based on gcc for embedded C aerospace applications adhering to NASA's JPL Rule of 10.
+
+Given a pre-compiled C file as an input, astroguard will run the following sequence to ensure code adheres to the standards established by NASA JPL's Rule of 10.
+
+1. Ensure proper installations of gcc, gda, gcov, and glov
+2. Compile the C file with highest level pedantic warning and error checking
+3. Execute the GDA debugger and output pretty-printed contents
+4. Run coverage checks anfd output logs via terminal
+5. Run glov for local coverage tests on the code
+6. Place all the output into a single file  

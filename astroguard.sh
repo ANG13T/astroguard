@@ -23,6 +23,10 @@ banner() {
     fi
 }
 
+about() {
+    cat "./assets/help.txt"
+}
+
 # Adding color to terminal messages
 print_color() {
     local text="$1"
@@ -30,40 +34,64 @@ print_color() {
     echo -e "${color}${text}${clear}"
 }
 
+# Step #1
 # Installation Checking
 # Checks for the following tools: gcc, gcov, gdb, and glov
-print_color "Lauching astroguard 🚀" blue
-print_color "Step 1 > Checking for installations" blue
 
-if command -v gcc &> /dev/null; then
-    echo "GCC is installed."
-    # Check GCC version
-    gcc_version=$(gcc --version | grep -oP 'gcc \K[^\s]+')
-    echo "GCC version: $gcc_version"
-else
-    echo "GCC is not installed. Please install GCC before proceeding."
-    exit 1
-fi
+installation() {
+    print_color "Lauching astroguard 🚀" blue
+    print_color "Step 1 > Checking for installations" blue
 
+    if command -v gcc &> /dev/null; then
+        echo "GCC is installed."
+        # Check GCC version
+        gcc_version=$(gcc --version | grep -oP 'gcc \K[^\s]+')
+        echo "GCC version: $gcc_version"
+    else
+        echo "GCC is not installed. Please install GCC before proceeding."
+        exit 1
+    fi
+}
 
-# Check if the correct number of arguments is provided
-if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 <path_to_c_file>"
-    exit 1
-fi
+# Step #2
+# Compiles the C program
+# Compilations settings set to the most pedantic level
 
-# Extract the file name and remove the extension
-file_path="$1"
-file_name=$(basename -- "$file_path")
-file_name_no_ext="${file_name%.*}"
+compile() {
+    # Check if the correct number of arguments is provided
+    if [ "$#" -ne 1 ]; then
+        echo "Usage: $0 <path_to_c_file>"
+        exit 1
+    fi
 
-# Compile the C file
-gcc –Wall –pedantic –Wtraditional –Wshadow –Wpointer-arith –Wcast-qual –Wcast-align –Wstrict–prototypes –Wmissing–prototypes –Wconversion –std=iso9899:1999" $file_path" -o "$file_name_no_ext"
+    # Extract the file name and remove the extension
+    file_path="$1"
+    file_name=$(basename -- "$file_path")
+    file_name_no_ext="${file_name%.*}"
 
-# Check if compilation was successful
-if [ $? -eq 0 ]; then
-    # Execute the compiled program
-    "./$file_name_no_ext"
-else
-    echo "Compilation failed."
-fi
+    # Compile the C file
+    gcc –Wall –pedantic –Wtraditional –Wshadow –Wpointer-arith –Wcast-qual –Wcast-align –Wstrict–prototypes –Wmissing–prototypes –Wconversion –std=iso9899:1999" $file_path" -o "$file_name_no_ext"
+
+    # Check if compilation was successful
+    if [ $? -eq 0 ]; then
+        # Execute the compiled program
+        "./$file_name_no_ext"
+    else
+        echo "Compilation failed."
+    fi
+}
+
+run() {
+
+}
+
+while getopts 'abf:v' flag; do
+  case "${flag}" in
+    a) a_flag='true' ;;
+    b) b_flag='true' ;;
+    f) files="${OPTARG}" ;;
+    v) verbose='true' ;;
+    *) print_usage
+       exit 1 ;;
+  esac
+done
