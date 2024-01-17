@@ -8,6 +8,9 @@ Prints out the following:
 - code converage (.gcda)
 - astroguard issues 
 
+Tool Pipline:
+gcc -> gda -> gcov -> glov
+
 ## Things to mention
 - Preprocessors
 
