@@ -80,3 +80,4 @@ astroguard is open to any contributions. Please fork the repository and make a p
 If you enjoyed astroguard, please consider becoming a sponsor in order to fund my future projects.
 
 To check out my other works, visit my [GitHub profile](github.com/ANG13T).
+To check out Stellaryx Labs, visit [stellaryxlabs.com](stellaryxlabs.com)
