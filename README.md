@@ -24,25 +24,25 @@ Make sure you have the following installed on your machine:
 
 ## NASA JPL Rule of 10
 
-[Rule 1](): Avoid complex flow constructs, such as goto and recursion.
+[Rule 1](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_1.c): Avoid complex flow constructs, such as goto and recursion.
 
-[Rule 2](): All loops must have fixed bounds. This prevents runaway code.
+[Rule 2](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_2.c): All loops must have fixed bounds. This prevents runaway code.
 
-[Rule 3](): Avoid heap memory allocation.
+[Rule 3](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_3.c): Avoid heap memory allocation.
 
-[Rule 4](): Restrict functions to a single printed page.
+[Rule 4](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_4.c): Restrict functions to a single printed page.
 
-[Rule 5](): Use a minimum of two runtime assertions per function.
+[Rule 5](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_5.c): Use a minimum of two runtime assertions per function.
 
-[Rule 6](): Restrict the scope of data to the smallest possible.
+[Rule 6](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_6.c): Restrict the scope of data to the smallest possible.
 
-[Rule 7](): Check the return value of all non-void functions, or cast to void to indicate the return value is useless.
+[Rule 7](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_7.c): Check the return value of all non-void functions, or cast to void to indicate the return value is useless.
 
-[Rule 8](): Use the preprocessor sparingly.
+[Rule 8](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_8.c): Use the preprocessor sparingly.
 
-[Rule 9](): Limit pointer use to a single dereference, and do not use function pointers.
+[Rule 9](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_9.c): Limit pointer use to a single dereference, and do not use function pointers.
 
-[Rule 10](): Compile with all possible warnings active; all warnings should then be addressed before release of the software.
+[Rule 10](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_10.c): Compile with all possible warnings active; all warnings should then be addressed before release of the software.
 
 ## TODO
 - save all materials to a common output name folder 
