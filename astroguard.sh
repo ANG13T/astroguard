@@ -11,7 +11,11 @@ set -o pipefail
 # Default Values
 hidebanner=0
 version=0.1
-output_file=""
+output_name=""
+file_name=""
+file_path=""
+file_name_no_ext=""
+file_path_no_ext=""
 
 # Default colors
 red='\033[0;31m'
@@ -65,20 +69,9 @@ print_color() {
     echo -e "${selected_color}${text}${clear}"
 }
 
-set_output_file() {
-    local path="$1"
-    local file_ext="${path: -3}"
-    if [ "${file_ext,,}" = "txt" ]; then
-        output_file="${path}"
-    else
-        echo "Invalid output file ${path}! Output file must be a text file!"
-        exit 1
-    fi
-}
-
 # Step #1
 # Installation Checking
-# Checks for the following tools: gcc, gcov, gdb, and glov
+# Checks for the following tools: gcc, gcov, gdb, and lcov
 
 installation() {
     print_color "Lauching astroguard 🚀" cyan
@@ -88,7 +81,34 @@ installation() {
         gcc_version=$(gcc --version | awk '/gcc/ {print $3}')
         print_color "GCC is installed! Version: $gcc_version" green
     else
-        echo "GCC is not installed. Please install GCC before proceeding."
+        print_color "GCC is not installed. Please install GCC before proceeding." red
+        exit 1
+    fi
+
+    if command -v gcov &> /dev/null; then
+        # Get gcov version
+        gcov_version=$(gcov --version | awk '/gcov/ {print $3}')
+        print_color "gcov is installed! Version: $gcov_version" green
+    else
+        print_color "gcov is not installed. Please install gcov before running this script." red
+        exit 1
+    fi
+
+    if command -v lcov &> /dev/null; then
+        # Get lcov version
+        lcov_version=$(lcov --version | awk '/lcov/ {print $3}')
+        print_color "lcov is installed! Version: $lcov_version" green
+    else
+        print_color "lcov is not installed. Please install lcov before running this script." red
+        exit 1
+    fi
+
+    if command -v gdb &> /dev/null; then
+        # Get gdb version
+        gdb_version=$(gdb --version | awk '/gdb/ {print $3}')
+        print_color "gdb is installed! Version: $gdb_version" green
+    else
+        print_color "gdb is not installed. Please install gdb before running this script." red
         exit 1
     fi
 }
@@ -98,21 +118,51 @@ installation() {
 # Compilations settings set to the most pedantic level
 
 compile() {
+    print_color "Step 2 > Compiling Input File" cyan
     # Compile the C file
-    gcc –Wall –pedantic –Wtraditional –Wshadow –Wpointer-arith –Wcast-qual –Wcast-align –Wstrict–prototypes –Wmissing–prototypes –Wconversion –std=iso9899:1999" $file_path" -o "$file_name_no_ext"
+    gcc -Wall -pedantic -Wtraditional -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wstrict-prototypes -Wmissing-prototypes -Wconversion -std=iso9899:1999 --coverage "${file_path}" -o "${file_path_no_ext}"
 
     # Check if compilation was successful
     if [ $? -eq 0 ]; then
         # Execute the compiled program
-        "./$file_name_no_ext"
+        "${file_path_no_ext}.exe"
     else
-        echo "Compilation failed."
+        print_color "Compilation failed." red
     fi
 }
 
-run() {
-    echo "running"
+# Step #3
+# Generate code coverage report using gcov
+
+coverage() {
+    print_color "Step 3 > Generating Coverage Report" cyan
+    gcov "${file_name}"
 }
+
+# Step #4
+# Generate line coverage report using lcov
+
+line_coverage() {
+    print_color "Step 4 > Generating Line Coverage Report" cyan
+    lcov --coverage --directory . --output-file main_coverage.info
+}
+
+# Step #5
+# Generate HTML coverage report using genhtml
+
+gen_html() {
+    print_color "Step 5 > Generating HTML Coverage Report" cyan
+    genhtml main_coverage.info --output-directory out
+}
+
+# Step #6
+# Run a debug report using gdb
+
+debug() {
+    print_color "Step 6 > Debugging Program" cyan 
+    gdb $file_name
+}
+
 
 while getopts "bBho:" flag; do
   case $flag in
@@ -124,7 +174,7 @@ while getopts "bBho:" flag; do
         exit 1
     ;;
     o)
-        set_output_file "$OPTARG"
+        output_name="$OPTARG"
     ;;
     \?)
         about
@@ -138,6 +188,8 @@ shift $((OPTIND-1))
 file_path="$1"
 file_name=$(basename -- "$file_path")
 file_name_no_ext="${file_name%.*}"
+file_path_no_ext="${file_path%.*}"
+echo $file_path_no_ext
 file_ext="${file_path: -1}"
 
 # Check if a file path is provided
@@ -151,3 +203,9 @@ fi
 
 banner
 installation
+compile
+coverage
+line_coverage
+gen_html
+debug
+print_color "Finished running all reports 🚀" cyan 

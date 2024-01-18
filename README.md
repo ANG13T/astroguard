@@ -62,6 +62,8 @@ Make sure you have the following installed on your machine:
 
 - additional:
 pretty printing of each step
+- save to file on each step
+- save all materials to a common output name folder 
 
 ## GCC Usage
 GCC (GNU Compiler Collection) is a compiler for C programs maintained by the GNU Project. It turns your C code into binary which is then interpreted by a computer. It performs static analysis and debugging. 

@@ -15,8 +15,10 @@
    \ \  __ \  \ \___  \  \/_/\ \/ \ \  __<   \ \ \/\ \  \ \ \__ \  \ \ \_\ \  \ \  __ \  \ \  __<   \ \ \/\ \ 
     \ \_\ \_\  \/\_____\    \ \_\  \ \_\ \_\  \ \_____\  \ \_____\  \ \_____\  \ \_\ \_\  \ \_\ \_\  \ \____- 
      \/_/\/_/   \/_____/     \/_/   \/_/ /_/   \/_____/   \/_____/   \/_____/   \/_/\/_/   \/_/ /_/   \/____/ 
-                                                                                                           
+
+
                Code auditing and streamlining tool for C programs to adhere to NASA JPL's Rule of 10
+               
                                 Developed for Stellaryx Labs [stellaryxlabs.com]
                                  Written by Angelina Tsuboi [angelinatsuboi.com]
 
