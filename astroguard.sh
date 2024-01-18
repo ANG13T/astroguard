@@ -24,7 +24,10 @@ clear='\033[0m'
 
 banner() {
     if [ $hidebanner == 0 ]; then
-    color_text $(cat "./assets/banner.txt") magenta
+    IFS=
+    while IFS= read -r line; do
+        print_color "$line" magenta
+    done < "./assets/banner.txt"
     fi
 }
 
@@ -36,7 +39,30 @@ about() {
 print_color() {
     local text="$1"
     local color="$2"
-    echo -e "${color}${text}${clear}"
+    local selected_color="$blue"
+
+    case $color in
+        red)
+            selected_color="$red"
+        ;;
+        green)
+            selected_color="$green"
+        ;;
+        yellow)
+            selected_color="$yellow"
+        ;;
+        blue)
+            selected_color="$blue"
+        ;;
+        magenta)
+            selected_color="$magenta"
+        ;;
+        cyan)
+            selected_color="$cyan"
+        ;;
+    esac
+
+    echo -e "${selected_color}${text}${clear}"
 }
 
 set_output_file() {
@@ -55,14 +81,12 @@ set_output_file() {
 # Checks for the following tools: gcc, gcov, gdb, and glov
 
 installation() {
-    print_color "Lauching astroguard 🚀" blue
-    print_color "Step 1 > Checking for installations" blue
+    print_color "Lauching astroguard 🚀" cyan
+    print_color "Step 1 > Checking for installations" cyan
 
     if command -v gcc &> /dev/null; then
-        echo "GCC is installed."
-        # Check GCC version
-        gcc_version=$(gcc --version | grep -oP 'gcc \K[^\s]+')
-        echo "GCC version: $gcc_version"
+        gcc_version=$(gcc --version | awk '/gcc/ {print $3}')
+        print_color "GCC is installed! Version: $gcc_version" green
     else
         echo "GCC is not installed. Please install GCC before proceeding."
         exit 1
@@ -118,12 +142,12 @@ file_ext="${file_path: -1}"
 
 # Check if a file path is provided
 if [ -z "$file_path" ]; then
-    echo "Error: File path not provided."
+    print_color "Error: File path not provided." red
     exit 1
 elif [ "${file_ext,,}" != "c" ]; then
-    echo "Error: File must be C."
+    print_color "Error: File must be C." red
     exit 1
 fi
 
+banner
 installation
-echo $file_ext
