@@ -11,13 +11,6 @@ Prints out the following:
 Tool Pipline:
 gcc -> gda -> gcov -> glov
 
-## Things to mention
-- Preprocessors
-
-- GCC and Clang print out options
-- GCC -> GCOV -> LCOV
-Streamline tool + debugging + pretty printing
-
 ## Usage
 ```
 git clone https://github.com/ANG13T/astroguard
@@ -27,10 +20,7 @@ astroguard.sh ./snippets/Rule_1.c
 ```
 
 Make sure you have the following installed on your machine:
-- gcc:
-- gdb: 
-- gcov: 
-- lcov:
+`gcc, gcov, gdb, and lcov`
 
 ## NASA JPL Rule of 10
 
