@@ -11,6 +11,9 @@ Prints out the following:
 Tool Pipline:
 gcc -> gda -> gcov -> glov
 
+### Preview
+<img src="https://github.com/ANG13T/astroguard/blob/main/assets/images/preview.png" alt="astroguard Image" width="600"/>
+
 ## Usage
 ```
 git clone https://github.com/ANG13T/astroguard
