@@ -209,3 +209,4 @@ line_coverage
 gen_html
 debug
 print_color "Finished running all reports 🚀" cyan 
+exit

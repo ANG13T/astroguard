@@ -55,14 +55,6 @@ Make sure you have the following installed on your machine:
 [Rule 10](): Compile with all possible warnings active; all warnings should then be addressed before release of the software.
 
 ## TODO
-- write a shell script which streamlines:
-1. GCC compiler with all flags
-2. Code coverage using gcov
-3. Reporting og .gcda files using LCOV 
-
-- additional:
-pretty printing of each step
-- save to file on each step
 - save all materials to a common output name folder 
 
 ## GCC Usage
