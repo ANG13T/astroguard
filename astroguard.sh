@@ -4,9 +4,14 @@
 # Written by Angelina Tsuboi [angelinatsuboi.com]
 # Released under MIT License
 
+set -- $GRARGS $@
+set -e
+set -o pipefail
+
 # Default Values
 hidebanner=0
 version=0.1
+output_file=""
 
 # Default colors
 red='\033[0;31m'
@@ -34,6 +39,17 @@ print_color() {
     echo -e "${color}${text}${clear}"
 }
 
+set_output_file() {
+    local path="$1"
+    local file_ext="${path: -3}"
+    if [ "${file_ext,,}" = "txt" ]; then
+        output_file="${path}"
+    else
+        echo "Invalid output file ${path}! Output file must be a text file!"
+        exit 1
+    fi
+}
+
 # Step #1
 # Installation Checking
 # Checks for the following tools: gcc, gcov, gdb, and glov
@@ -58,17 +74,6 @@ installation() {
 # Compilations settings set to the most pedantic level
 
 compile() {
-    # Check if the correct number of arguments is provided
-    if [ "$#" -ne 1 ]; then
-        echo "Usage: $0 <path_to_c_file>"
-        exit 1
-    fi
-
-    # Extract the file name and remove the extension
-    file_path="$1"
-    file_name=$(basename -- "$file_path")
-    file_name_no_ext="${file_name%.*}"
-
     # Compile the C file
     gcc –Wall –pedantic –Wtraditional –Wshadow –Wpointer-arith –Wcast-qual –Wcast-align –Wstrict–prototypes –Wmissing–prototypes –Wconversion –std=iso9899:1999" $file_path" -o "$file_name_no_ext"
 
@@ -82,16 +87,43 @@ compile() {
 }
 
 run() {
-
+    echo "running"
 }
 
-while getopts 'abf:v' flag; do
-  case "${flag}" in
-    a) a_flag='true' ;;
-    b) b_flag='true' ;;
-    f) files="${OPTARG}" ;;
-    v) verbose='true' ;;
-    *) print_usage
-       exit 1 ;;
+while getopts "bBho:" flag; do
+  case $flag in
+    b)
+        hidebanner=1
+    ;;
+    h)
+        about
+        exit 1
+    ;;
+    o)
+        set_output_file "$OPTARG"
+    ;;
+    \?)
+        about
+        exit 2
+    ;;
   esac
 done
+
+shift $((OPTIND-1))
+
+file_path="$1"
+file_name=$(basename -- "$file_path")
+file_name_no_ext="${file_name%.*}"
+file_ext="${file_path: -1}"
+
+# Check if a file path is provided
+if [ -z "$file_path" ]; then
+    echo "Error: File path not provided."
+    exit 1
+elif [ "${file_ext,,}" != "c" ]; then
+    echo "Error: File must be C."
+    exit 1
+fi
+
+installation
+echo $file_ext

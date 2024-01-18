@@ -1,8 +1,10 @@
-Usage: astroguard [flag] /path/to/file.c
+
+Usage: astroguard [flags] /path/to/file.c
 
 FLAGS:
 -h prints out a help screen
 -o output file path for output contents (optional)
+-b hide the banner
 
 ABOUT:
 astroguard is a simple code auditing and debugger tool based on gcc for embedded C aerospace applications adhering to NASA's JPL Rule of 10.
