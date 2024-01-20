@@ -3,7 +3,6 @@ Usage: astroguard [flags] /path/to/file.c
 
 FLAGS:
 -h prints out a help screen
--o output file path for output contents
 -b hide the banner
 
 ABOUT:
@@ -11,9 +10,8 @@ astroguard is a simple code auditing and debugger tool based on gcc for embedded
 
 Given a pre-compiled C file as an input, astroguard will run the following sequence to ensure code adheres to the standards established by NASA JPL's Rule of 10.
 
-1. Ensure proper installations of gcc, gda, gcov, and lcov
+1. Ensure proper installations of gcc, gcov, and lcov
 2. Compile the C file with highest level pedantic warning and error checking
 3. Run coverage checks and output logs via terminal
 4. Run lcov for local coverage tests on the code
-5. Execute the GDA debugger and output pretty-printed contents
-6. Place all the output into a single file  
+5. Displays the lcov web display output 
