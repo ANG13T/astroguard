@@ -137,7 +137,7 @@ coverage() {
 
 line_coverage() {
     print_color "Step 4 > Generating Line Coverage Report" cyan
-    lcov --coverage --directory . --output-file main_coverage.info
+    lcov -c --directory . --output-file main_coverage.info
 }
 
 # Step #5
@@ -146,14 +146,6 @@ line_coverage() {
 gen_html() {
     print_color "Step 5 > Generating HTML Coverage Report" cyan
     genhtml main_coverage.info --output-directory out
-}
-
-# Step #6
-# Run a debug report using gdb
-
-debug() {
-    print_color "Step 6 > Debugging Program" cyan 
-    gdb $file_name
 }
 
 
@@ -200,6 +192,5 @@ compile
 coverage
 line_coverage
 gen_html
-debug
 print_color "Finished running all reports 🚀" cyan 
 exit
