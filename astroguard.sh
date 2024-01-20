@@ -11,7 +11,6 @@ set -o pipefail
 # Default Values
 hidebanner=0
 version=0.1
-output_name=""
 file_name=""
 file_path=""
 file_name_no_ext=""
@@ -146,6 +145,7 @@ line_coverage() {
 gen_html() {
     print_color "Step 5 > Generating HTML Coverage Report" cyan
     genhtml main_coverage.info --output-directory out
+    open "./${pwd}${dirname}/out/index.html"
 }
 
 
@@ -157,9 +157,6 @@ while getopts "bBho:" flag; do
     h)
         about
         exit 1
-    ;;
-    o)
-        output_name="$OPTARG"
     ;;
     \?)
         about
