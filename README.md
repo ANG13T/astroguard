@@ -1,15 +1,6 @@
 # astroguard
-A simple code auditing and debugger tool based on gcc for embedded C aerospace applications adhering to NASA's JPL Rule of 10.
-
-## About
-
-Gcov is a source code coverage analysis and statement-by-statement profiling tool
-Prints out the following:
-- code converage (.gcda)
-- astroguard issues 
-
-Tool Pipline:
-gcc -> gda -> gcov -> glov
+A simple code auditing and profiling tool based on gcc for C programs to adhere to NASA's JPL Rule of 10.
+C programs can be specified into the tool and is run through a sequence of `gcc -> gcov -> glov` to obtain code coverage and compilation information.
 
 ### Preview
 <img src="https://github.com/ANG13T/astroguard/blob/main/assets/images/preview.png" alt="astroguard Image" width="600"/>
@@ -23,7 +14,7 @@ astroguard.sh ./snippets/Rule_1.c
 ```
 
 Make sure you have the following installed on your machine:
-`gcc, gcov, gdb, and lcov`
+`gcc, gcov, and lcov`
 
 ## NASA JPL Rule of 10
 
@@ -46,9 +37,6 @@ Make sure you have the following installed on your machine:
 [Rule 9](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_9.c): Limit pointer use to a single dereference, and do not use function pointers.
 
 [Rule 10](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_10.c): Compile with all possible warnings active; all warnings should then be addressed before release of the software.
-
-## TODO
-- save all materials to a common output name folder 
 
 ## GCC Usage
 GCC (GNU Compiler Collection) is a compiler for C programs maintained by the GNU Project. It turns your C code into binary which is then interpreted by a computer. It performs static analysis and debugging. 
@@ -75,6 +63,9 @@ gcc Rule_4.c -o Rule_4
 
 ## Contributing ✨
 astroguard is open to any contributions. Please fork the repository and make a pull request with the features or fixes you want to implement.
+
+#### Suggested Features
+- An output directory that stores all output files from the astroguard.sh script which can be specified via path `-o`
 
 ## Support 💜
 If you enjoyed astroguard, please consider becoming a sponsor in order to fund my future projects.
