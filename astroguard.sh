@@ -78,35 +78,28 @@ installation() {
     print_color "Step 1 > Checking for installations" cyan
 
     if command -v gcc &> /dev/null; then
-        gcc_version=$(gcc --version | awk '/gcc/ {print $3}')
-        print_color "GCC is installed! Version: $gcc_version" green
+        print_color "GCC is installed!"
     else
         print_color "GCC is not installed. Please install GCC before proceeding." red
         exit 1
     fi
 
     if command -v gcov &> /dev/null; then
-        # Get gcov version
-        gcov_version=$(gcov --version | awk '/gcov/ {print $3}')
-        print_color "gcov is installed! Version: $gcov_version" green
+        print_color "gcov is installed!"
     else
         print_color "gcov is not installed. Please install gcov before running this script." red
         exit 1
     fi
 
     if command -v lcov &> /dev/null; then
-        # Get lcov version
-        lcov_version=$(lcov --version | awk '/lcov/ {print $3}')
-        print_color "lcov is installed! Version: $lcov_version" green
+        print_color "lcov is installed!"
     else
         print_color "lcov is not installed. Please install lcov before running this script." red
         exit 1
     fi
 
     if command -v gdb &> /dev/null; then
-        # Get gdb version
-        gdb_version=$(gdb --version | awk '/gdb/ {print $3}')
-        print_color "gdb is installed! Version: $gdb_version" green
+        print_color "gdb is installed!"
     else
         print_color "gdb is not installed. Please install gdb before running this script." red
         exit 1
@@ -125,7 +118,7 @@ compile() {
     # Check if compilation was successful
     if [ $? -eq 0 ]; then
         # Execute the compiled program
-        "${file_path_no_ext}.exe"
+        "${file_path_no_ext}"
     else
         print_color "Compilation failed." red
     fi
@@ -196,7 +189,7 @@ file_ext="${file_path: -1}"
 if [ -z "$file_path" ]; then
     print_color "Error: File path not provided." red
     exit 1
-elif [ "${file_ext,,}" != "c" ]; then
+elif [ "${file_ext}" != "c" ]; then
     print_color "Error: File must be C." red
     exit 1
 fi
