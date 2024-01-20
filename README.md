@@ -1,9 +1,8 @@
+<img src="https://github.com/ANG13T/astroguard/blob/main/assets/banner.png" alt="astroguard Banner" width="800"/>
+
 # astroguard
 A simple code auditing and profiling tool based on gcc for C programs to adhere to NASA's JPL Rule of 10.
 C programs can be specified into the tool and is run through a sequence of **gcc -> gcov -> glov** to obtain code coverage and compilation information.
-
-### Preview 🪐
-<img src="https://github.com/ANG13T/astroguard/blob/main/assets/images/preview.png" alt="astroguard Image" width="600"/>
 
 ## Usage 🚀
 ```
@@ -15,6 +14,9 @@ astroguard.sh ./snippets/Rule_1.c
 
 Make sure you have the following installed on your machine:
 `gcc, gcov, and lcov`
+
+### Preview 🪐
+<img src="https://github.com/ANG13T/astroguard/blob/main/assets/images/preview.png" alt="astroguard Image" width="600"/>
 
 ## NASA JPL Rule of 10 ✨
 
