@@ -1,11 +1,11 @@
 # astroguard
 A simple code auditing and profiling tool based on gcc for C programs to adhere to NASA's JPL Rule of 10.
-C programs can be specified into the tool and is run through a sequence of `gcc -> gcov -> glov` to obtain code coverage and compilation information.
+C programs can be specified into the tool and is run through a sequence of **gcc -> gcov -> glov** to obtain code coverage and compilation information.
 
-### Preview
+### Preview 🪐
 <img src="https://github.com/ANG13T/astroguard/blob/main/assets/images/preview.png" alt="astroguard Image" width="600"/>
 
-## Usage
+## Usage 🚀
 ```
 git clone https://github.com/ANG13T/astroguard
 cd astroguard
@@ -16,7 +16,7 @@ astroguard.sh ./snippets/Rule_1.c
 Make sure you have the following installed on your machine:
 `gcc, gcov, and lcov`
 
-## NASA JPL Rule of 10
+## NASA JPL Rule of 10 ✨
 
 [Rule 1](https://github.com/ANG13T/astroguard/blob/main/snippets/Rule_1.c): Avoid complex flow constructs, such as goto and recursion.
 
@@ -45,7 +45,7 @@ GCC (GNU Compiler Collection) is a compiler for C programs maintained by the GNU
 astroguard settings should be set to the most pedantic level of operation.
 Run the astroguard.sh with your chosen C file to compile your selected file with those warnings.
 
-## Testing out Snippets
+## Testing out Snippets 🔨
 ```
 cd snippets
 gcc Rule_4.c -o Rule_4
