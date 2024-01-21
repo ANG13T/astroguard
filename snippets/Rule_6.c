@@ -2,7 +2,7 @@
  NASA JPL Rule #6: Restrict the scope of data to the smallest possible
 
  What is a scope?
- A scope is a region where a varibale can be defined and utilized.
+ A scope is a region where a variable can be defined and utilized.
  
  How to limit scope?
  There are two types of scopes:
