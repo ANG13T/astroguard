@@ -74,4 +74,4 @@ If you enjoyed astroguard, please consider becoming a sponsor in order to fund m
 
 To check out my other works, visit my [GitHub profile](github.com/ANG13T).
 
-To check out Stellaryx Labs, visit [stellaryxlabs.com](stellaryxlabs.com)
+To check out Stellaryx Labs, visit [stellaryxlabs.com](https://stellaryxlabs.com)
